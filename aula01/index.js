@@ -69,20 +69,36 @@ function digaOlaPara(nome, sobrenome) {
 //   .catch((erro) => console.log(erro));
 
 const minhaFuncao = (erro) => {
-  const promise = new Promise((resolve, reject) => {
+  const minhaVariavelPromise = new Promise((resolve, reject) => {
+    console.log('1');
     if (erro) {
       reject('Promise com erro (rejeitada)!');
     }
     resolve('Promise com sucesso (resolvida)!');
   });
 
-  promise
-    .then((resultado) => console.log('Ok', resultado))
-    .catch((erro) => console.log('Erro', erro))
+  minhaVariavelPromise
+    .then((resultado) => {
+      console.log('2');
+      console.log('Ok', resultado);
+    })
+    .catch((erro) => {
+      console.log('3');
+      console.log('Erro', erro);
+    })
     .finally(() => {
+      console.log('4');
       console.log('Final');
     });
 };
 
-minhaFuncao(false);
-minhaFuncao(true);
+// minhaFuncao(false);
+// minhaFuncao(true);
+
+const teste = () => {
+  minhaFuncao(false);
+};
+const button = document.getElementById('button');
+button.addEventListener('click', function () {
+  minhaFuncao(false);
+});
